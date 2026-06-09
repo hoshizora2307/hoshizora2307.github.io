@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI_FORGE // STELLAR INTELLIGENCE</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -324,6 +323,19 @@
             text-align: justify;
         }
 
+        /* ✨ 追加したリンク用CSS */
+        .card-link {
+            color: var(--neon-blue);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(0, 242, 254, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .card-link:hover {
+            color: var(--neon-green);
+            border-bottom-color: var(--neon-green);
+        }
+
         /* お問い合わせ */
         .contact-box {
             max-width: 550px;
@@ -384,7 +396,6 @@
             border-color: var(--neon-green);
         }
 
-        /* 🛠 フッター文言の修正 */
         footer {
             border-top: 1px solid var(--border-color);
             padding: 2.5rem 0;
@@ -415,7 +426,6 @@
 </head>
 <body>
 
-    <!-- 🎥 背景動画 -->
     <div class="video-background">
         <video id="bg-video" autoplay loop muted playsinline webkit-playsinline pwa-playsinline>
             <source src="1331.mp4" type="video/mp4">
@@ -425,7 +435,6 @@
     </div>
 
     <div class="container">
-        <!-- 📌 固定ヘッダー -->
         <header id="main-header">
             <a href="#" class="logo">STELLAR_AI</a>
             <nav>
@@ -435,7 +444,6 @@
         </header>
 
         <main>
-            <!-- ヒーローセクション -->
             <section class="hero">
                 <div class="hero-tag">// QUANTUM INTELLIGENCE LABORATORY</div>
                 <div class="title-wrap">
@@ -450,7 +458,6 @@
                 <a href="#contact" class="cta-btn">LAUNCH PROJECT</a>
             </section>
 
-            <!-- セクション 01: 実績 -->
             <section class="section" id="projects">
                 <div class="section-header">
                     <div class="section-num">01 // CORE ARCHIVE</div>
@@ -459,16 +466,14 @@
                 
                 <div class="grid">
                     
-                    <!-- カード 1 -->
                     <div class="card">
                         <div class="card-tag">FINANCIAL TECH // HIGH-FREQUENCY</div>
                         <div class="card-title">超高速・金融市場解析ロジック</div>
                         <p class="card-text">
-                            ミリ秒単位の極めて膨大なグローバル市場データを、独自構築のAI推論エンジンがリアルタイムで高精度に自動解析します。高度な時系列予測アルゴリズムとリスクヘッジロジックをシームレスに結合し、急激なボラティリティ変化に対しても即座に適応。ゼロダウンタイムを想定した堅牢なアーキテクチャに加え、エンドツーエンドの暗号処理技術をプログラミングすることで、最高峰のセキュリティと超低遅延を極限まで両立した、次世代型の金融トレーディング・バックエンドシステムです。
+                            ミリ秒単位の極めて膨大なグローバル市場データを、独自構築 of AI推論エンジンがリアルタイムで高精度に自動解析します。高度な時系列予測アルゴリズムとリスクヘッジロジックをシームレスに結合し、急激なボラティリティ変化に対しても即座に適応。ゼロダウンタイムを想定した堅牢なアーキテクチャに加え、エンドツーエンドの暗号処理技術をプログラミングすることで、最高峰のセキュリティと超低遅延を極限まで両立した、次世代型の金融トレーディング・バックエンドシステムです。
                         </p>
                     </div>
 
-                    <!-- カード 2 -->
                     <div class="card">
                         <div class="card-tag">GOVERNMENT // DOCUMENT AUTOMATION</div>
                         <div class="card-title">公的書類の自動生成・出力エンジン</div>
@@ -477,129 +482,8 @@
                         </p>
                     </div>
 
-                    <!-- カード 3 -->
                     <div class="card">
                         <div class="card-tag">ASTRO-DATA // WEATHER FORECAST</div>
                         <div class="card-title">自律型星空気象予測システム</div>
                         <p class="card-text">
-                            全国各地の高高度光学観測カメラから受信するリアルタイム画像フィードと、複数のグローバル気象メッシュデータをマルチモーダルAIで統合。大気微粒子の挙動や局所的な雲の生成メカニズムをシミュレーションし、満天の星空が広がる最適なタイミングと観測スポットを94.8%という圧倒的な予測精度で自動検出する自律型計算システムです。自然科学データの計算処理と宇宙観測ロジックを融合させた、最先端のデータサイエンスを具現化しています。
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- セクション 02: お問い合わせ -->
-            <section class="section" id="contact">
-                <div class="section-header">
-                    <div class="section-num">02 // INQUIRY CONSOLE</div>
-                    <h2 class="section-title">Connect with Us</h2>
-                </div>
-                
-                <div class="contact-box">
-                    <form action="https://formspree.io/f/meewzjlg" method="POST">
-                        <div class="form-group">
-                            <label for="name">NAME // お名前</label>
-                            <input type="text" id="name" name="name" required placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">EMAIL // メールアドレス</label>
-                            <input type="email" id="email" name="_replyto" required placeholder="address@domain.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">PROJECT DETAILS // ご依頼内容</label>
-                            <textarea id="message" name="message" rows="4" required placeholder="金融系ロジック、公的書類出力、AI自動化プログラム作成など、概要をお聞かせください。"></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">SEND DISPATCH</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!-- 📌 クリーンに修正したフッター -->
-        <footer>
-            &copy; 2026 STELLAR_AI LAB. ALL RIGHTS RESERVED.
-        </footer>
-    </div>
-
-    <script>
-        // --- 1. タイピングテキスト ---
-        const words = ["プログラムを作成する。", "システムを構築する。", "未来を実装する。"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const target = document.getElementById('typed-target');
-
-        function type() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                target.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                target.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 25 : 50;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2200;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 200;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        // --- 2. 動画の強制再生安全装置 ---
-        function forcePlayVideo() {
-            const video = document.getElementById('bg-video');
-            if (video) {
-                video.play().catch((err) => {
-                    console.log("Auto-play prevented, retrying on user interaction.");
-                    document.body.addEventListener('click', () => { video.play(); }, { once: true });
-                });
-            }
-        }
-
-        // --- 3. スクロール時のヘッダー背景変化 ---
-        function handleHeaderScroll() {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 20) {
-                header.style.background = "rgba(2, 4, 6, 0.75)";
-                header.style.padding = "0.7rem 1.2rem";
-                header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)";
-            } else {
-                header.style.background = "rgba(2, 4, 6, 0.45)";
-                header.style.padding = "0.9rem 1.2rem";
-                header.style.boxShadow = "none";
-            }
-        }
-        
-        window.addEventListener("load", () => {
-            setTimeout(type, 800);
-            forcePlayVideo();
-        });
-
-        window.addEventListener("scroll", handleHeaderScroll);
-
-        // --- 4. スクロール時のフェードイン効果 ---
-        const sections = document.querySelectorAll('.section');
-        const observerOptions = { root: null, threshold: 0.05 };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => observer.observe(section));
-    </script>
-</body>
-</html>
+                            全国各地の高高度光学観測カメラから受信するリアルタイム画像フィードと、複数のグローバル気象メッシュデータをマルチモーダルAIで統合。大気微粒子の挙動や局所的な雲の生成メカニズムをシミュレーションし、満天の星空が広がる最適なタイミング
