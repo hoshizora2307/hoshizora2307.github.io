@@ -9,9 +9,13 @@
         :root {
             --bg-color: #030708;
             --accent-color: #5ff2d6; /* 特徴的なネオンミント */
+            --accent-glow: rgba(95, 242, 214, 0.25);
             --text-primary: #ffffff;
             --text-secondary: #8a99ad;
+            --text-muted: #4e5d73;
             --border-color: rgba(95, 242, 214, 0.15);
+            --card-bg: rgba(6, 11, 15, 0.7);
+            --input-bg: rgba(3, 7, 8, 0.8);
         }
 
         * {
@@ -19,6 +23,10 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -35,17 +43,21 @@
         /* 背景動画エリア（画面全体に固定・最背面） */
         .video-background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             z-index: 1;
+            transform: translate(-50%, -50%);
             object-fit: cover;
             pointer-events: none;
-            opacity: 0.6; /* 動画の明るさを抑えて文字を読みやすく調整 */
+            opacity: 0.4;
+            transition: opacity 0.5s ease;
         }
 
-        /* 動画の上のオーバーレイ（暗色のグラデーションで文字の視認性をさらに強化） */
+        /* 動画の上のオーバーレイ */
         .video-overlay {
             position: fixed;
             top: 0;
@@ -53,7 +65,7 @@
             width: 100%;
             height: 100%;
             z-index: 2;
-            background: radial-gradient(circle at 50% 35%, rgba(3, 7, 8, 0.2) 0%, var(--bg-color) 80%);
+            background: radial-gradient(circle at 50% 25%, rgba(3, 7, 8, 0.1) 0%, var(--bg-color) 95%);
             pointer-events: none;
         }
 
@@ -105,7 +117,7 @@
             justify-content: center;
             text-align: center;
             padding: 40px 24px 120px;
-            max-width: 680px;
+            max-width: 1100px;
             width: 100%;
             position: relative;
             z-index: 10;
@@ -117,95 +129,251 @@
             font-weight: 600;
             letter-spacing: 0.25em;
             color: var(--accent-color);
-            background: rgba(3, 7, 8, 0.6); /* 背面の動画が透けても見やすいよう暗く設定 */
+            background: rgba(3, 7, 8, 0.7);
             border: 1px solid var(--border-color);
             padding: 12px 24px;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
             text-transform: uppercase;
             border-radius: 2px;
-            backdrop-filter: blur(4px); /* グラスモルフィズム効果 */
+            backdrop-filter: blur(4px);
         }
 
-        /* メインコピー */
+        /* ヒーローコピー */
+        .hero-section {
+            max-width: 680px;
+            margin-bottom: 80px;
+            min-height: 240px; /* タイピング時のガタつき防止 */
+        }
+
         h1 {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 400;
             letter-spacing: 0.05em;
             line-height: 1.4;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             color: var(--text-primary);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
 
-        /* メイン説明文 */
+        /* タイピングカーソルのエフェクト */
+        .typed-text::after {
+            content: '|';
+            animation: blink 0.75s step-end infinite;
+            color: var(--accent-color);
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            from, to { color: transparent }
+            50% { color: var(--accent-color); }
+        }
+
         .description {
             font-size: 14px;
             line-height: 2;
             color: var(--text-secondary);
             letter-spacing: 0.08em;
-            margin-bottom: 56px;
-            text-align: justify;
-            text-justify: inter-character;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
         }
 
-        /* ローンチボタン */
-        .btn-launch {
+        /* セクションタイトル */
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            width: 100%;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        /* 実績・ソリューションのグリッドエリア */
+        .grid-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 96px;
+            text-align: left;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            border-radius: 4px;
+            backdrop-filter: blur(8px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        .card-meta {
+            font-size: 11px;
+            color: var(--accent-color);
+            font-family: monospace;
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        .card-body {
+            font-size: 13px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+        }
+
+        .card-details {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 12px;
+            color: var(--text-muted);
+            list-style: none;
+        }
+
+        .card-details li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .card-details li::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* お問い合わせフォームセクション */
+        .contact-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 4px;
+            backdrop-filter: blur(12px);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            padding: 14px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(95, 242, 214, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* 汎用サイバーボタン */
+        .btn-stellar {
             display: inline-block;
+            width: 100%;
             background-color: var(--text-primary);
             color: #000000;
+            border: none;
             text-decoration: none;
+            text-align: center;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.15em;
             padding: 18px 48px;
             border-radius: 2px;
+            cursor: pointer;
             transition: opacity 0.3s ease, transform 0.2s ease;
             text-transform: uppercase;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .btn-launch:hover {
+        .btn-stellar:hover {
             opacity: 0.9;
             transform: translateY(-1px);
         }
 
+        .btn-hero-wrap {
+            text-align: center;
+            margin-top: 32px;
+        }
+        
+        .btn-hero-wrap .btn-stellar {
+            width: auto;
+        }
+
         /* モバイル端末への完全レスポンシブ最適化 */
+        @media (max-width: 960px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
         @media (max-width: 480px) {
-            header {
-                padding: 24px 20px;
-            }
-            .logo {
-                font-size: 18px;
-            }
-            nav {
-                gap: 20px;
-            }
+            header { padding: 24px 20px; }
+            .logo { font-size: 18px; }
+            nav { gap: 20px; }
             .badge {
                 font-size: 10px;
                 padding: 10px 16px;
-                margin-bottom: 40px;
+                margin-bottom: 32px;
                 width: 100%;
+                text-align: center;
             }
-            h1 {
-                font-size: 26px;
-                line-height: 1.5;
-            }
-            .description {
-                font-size: 13px;
-                line-height: 1.8;
-                margin-bottom: 48px;
-            }
-            .btn-launch {
-                width: 100%;
-                padding: 16px 0;
-            }
+            h1 { font-size: 28px; line-height: 1.4; }
+            .description { font-size: 13px; line-height: 1.8; }
+            .card { padding: 24px; }
+            .contact-form { padding: 24px; }
+            .btn-stellar { width: 100% !important; padding: 16px 0; }
         }
     </style>
 </head>
 <body>
 
-    <video class="video-background" autoplay loop muted playsinline>
+    <video id="bg-video" class="video-background" autoplay loop muted playsinline preload="auto">
         <source src="1331.mp4" type="video/mp4">
     </video>
     
@@ -214,8 +382,8 @@
     <header>
         <a href="#" class="logo">STELLAR_AI</a>
         <nav>
-            <a href="#">Archive</a>
-            <a href="#">Contact</a>
+            <a href="#archive">Archive</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -224,14 +392,107 @@
             // Quantum Intelligence Laboratory
         </div>
 
-        <h1>AIを駆使したあらゆる</h1>
+        <div class="hero-section">
+            <h1 id="hero-title" class="typed-text"></h1>
+            <p class="description">
+                澄み切った星空のように、複雑なノイズから本質を見出す。金融工学、行政自動化、自然科学計算モデルを実装するプログラミングスタジオ。独自構築のニューラルアーキテクチャを用い、ミッションクリティカルな実業領域の最適化を実行します。
+            </p>
+            <div class="btn-hero-wrap">
+                <a href="#contact" class="btn-stellar">Launch Project</a>
+            </div>
+        </div>
 
-        <p class="description">
-            澄み切った星空のように、複雑なノイズから本質を見出す。金融工学、行政自動化、自然科学計算モデルを実装するプログラミングスタジオ。
-        </p>
+        <div id="archive" class="section-title">Core Modules // Development Cases</div>
+        <div class="grid-container">
+            
+            <div class="card">
+                <div class="card-meta">MODULE_01 // QUANTUM_FINANCE</div>
+                <div class="card-title">超高頻度・金融システム</div>
+                <div class="card-body">
+                    数ミリ秒の変動から数兆パターンの市場ノイズをリアルタイムで分離。強化学習アルゴリズムをコアに組み込み、流動性予測と資産価格のマイクロ秒単位の最適配置アルゴリズムを自律実行する計算基盤。
+                </div>
+                <ul class="card-details">
+                    <li>ミリ秒以下の超低遅延処理（HFTロジック）</li>
+                    <li>異常検知による不審取引のリアルタイム遮断</li>
+                    <li>マルチエージェント型シミュレーション</li>
+                </ul>
+            </div>
 
-        <a href="#" class="btn-launch">Launch Project</a>
+            <div class="card">
+                <div class="card-meta">MODULE_02 // ADMINISTRATIVE_ENGINE</div>
+                <div class="card-title">公的書類自動生成・審査系</div>
+                <div class="card-body">
+                    複雑に入り組む法的要件や行政通達のデータベースをLLMグラフ構造で完全解析。法的整合性を担保した公的書類の自動出力エンジン、および申請書類に潜む矛盾を自動検知する厳密なディープロジック。
+                </div>
+                <ul class="card-details">
+                    <li>RAGを超えた法規グラフ照合アルゴリズム</li>
+                    <li>非構造化データからの極めて高精度な情報抽出</li>
+                    <li>ヒューマンエラーを限りなく零にする検証システム</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-meta">MODULE_03 // METEOROLOGICAL_PREDICTION</div>
+                <div class="card-title">自律型・高解像度気象予報</div>
+                <div class="card-body">
+                    従来の物理シミュレーションをディープラーニング計算モデルに統合。衛星データ、気温、気圧の流れをメッシュ状に構造化し、局所的な集中豪雨や急激な気候変動をピンポイントで予測する流体解析ニューラルネットワーク。
+                </div>
+                <ul class="card-details">
+                    <li>時空間グラフニューラルネットワーク（GNN）</li>
+                    <li>線状降水帯・突発災害の発生検知予測</li>
+                    <li>計算コストを従来の数百分の一に削減</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div id="contact" class="section-title">Console // Secure Contact</div>
+        <div class="contact-section">
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Identity / 御社名・お名前</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="STELLAR PARTNERS" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Signal Endpoint / メールアドレス</label>
+                    <input type="email" id="email" name="_replyto" class="form-control" placeholder="client@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Transmission Data / 問い合わせ内容</label>
+                    <textarea id="message" name="message" class="form-control" placeholder="プロジェクトの要件、または共同開発のご相談内容をご入力ください..." required></textarea>
+                </div>
+                <button type="submit" class="btn-stellar">Transmit Signal</button>
+            </form>
+        </div>
+
     </main>
+
+    <script>
+        // 1. 自動再生エラー時の安全処理
+        const video = document.getElementById('bg-video');
+        if (video) {
+            video.addEventListener('error', function() {
+                video.style.opacity = '0';
+            }, true);
+        }
+
+        // 2. AIタイピングエフェクトの実装
+        const textToType = "AIを駆使したあらゆる";
+        const typingSpeed = 150; // タイピング速度(ms)
+        const element = document.getElementById("hero-title");
+        let index = 0;
+
+        function typeEffect() {
+            if (index < textToType.length) {
+                element.textContent += textToType.charAt(index);
+                index++;
+                setTimeout(typeEffect, typingSpeed);
+            }
+        }
+
+        // ロード完了時にタイピングエフェクトを開始
+        window.addEventListener('DOMContentLoaded', typeEffect);
+    </script>
 
 </body>
 </html>
