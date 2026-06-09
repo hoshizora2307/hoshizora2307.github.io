@@ -10,14 +10,13 @@
     
     <style>
         :root {
-            /* 志賀高原の美しい夜空から着想を得たディープスペースカラー */
             --bg-dark: #030508;
             --bg-space: linear-gradient(135deg, #030508 0%, #080c14 50%, #0d071a 100%);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --neon-blue: #00f2fe; /* 澄んだ星の輝き */
-            --neon-purple: #4facfe; /* 星雲のグラデーション */
-            --neon-green: #00ffcc; /* オーロラグリーン */
+            --neon-blue: #00f2fe; 
+            --neon-purple: #4facfe; 
+            --neon-green: #00ffcc; 
         }
 
         * {
@@ -39,7 +38,7 @@
             line-height: 1.8;
         }
 
-        /* 背景：星空とデジタルグリッドのレイヤー */
+        /* 背景レイヤー */
         .background-layers {
             position: fixed;
             top: 0;
@@ -57,7 +56,6 @@
             opacity: 0.8;
         }
 
-        /* 空間の広がりを感じさせる極薄のデジタルグリッド */
         .grid-layer {
             position: absolute;
             width: 100%;
@@ -80,7 +78,7 @@
             padding: 0 2rem;
         }
 
-        /* ガラスモルフィズムを採用した美しいヘッダー */
+        /* ガラスモルフィズムヘッダー */
         header {
             display: flex;
             justify-content: space-between;
@@ -120,7 +118,7 @@
             text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
         }
 
-        /* ヒーローセクション */
+        /* ヒーロー */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -144,7 +142,7 @@
 
         .hero-title {
             font-size: clamp(2.2rem, 6vw, 5.5rem);
-            font-weight: 200; /* あえて細くして高級感を出す */
+            font-weight: 200;
             line-height: 1.15;
             letter-spacing: -2px;
             margin-bottom: 2.5rem;
@@ -176,7 +174,6 @@
             font-weight: 400;
         }
 
-        /* 宇宙的な光を放つ最先端のボタン */
         .cta-btn {
             display: inline-block;
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
@@ -198,12 +195,12 @@
             color: #fff;
         }
 
-        /* スクロールフェードイン */
+        /* セクション */
         .section {
             padding: 10rem 0;
             opacity: 0;
             transform: translateY(60px);
-            transition: all 1.2rem cubic-bezier(0.215, 0.610, 0.355, 1);
+            transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
         .section.visible {
@@ -228,7 +225,7 @@
             letter-spacing: 1px;
         }
 
-        /* 実績：高級感のあるフロストガラス風グリッド */
+        /* グリッド */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -243,7 +240,6 @@
             padding: 3rem 2.5rem;
             border-radius: 16px;
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
         }
 
         .card-tag {
@@ -274,7 +270,7 @@
             line-height: 1.8;
         }
 
-        /* お問い合わせフォーム */
+        /* お問い合わせ */
         .contact-box {
             max-width: 650px;
             margin: 0 auto;
@@ -364,4 +360,25 @@
 <body>
 
     <div class="background-layers">
-        
+        <canvas id="star-canvas"></canvas>
+        <div class="grid-layer"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <a href="#" class="logo">STELLAR_AI</a>
+            <nav>
+                <a href="#projects">ARCHIVE</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-tag">// QUANTUM INTELLIGENCE LABORATORY</div>
+                <h1 class="hero-title">
+                    AIを駆使したあらゆる<br>
+                    <strong><span class="typing-container" id="typed-target"></span></strong>
+                </h1>
+                <p class="hero-desc">
+                    澄み切った星空のように、複雑なノイズから本質を見つけ出す。金融工学、行政自動
