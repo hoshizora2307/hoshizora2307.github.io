@@ -27,6 +27,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* 固定ヘッダーの高さ分、リンク移動時のズレを補正 */
         }
 
         body {
@@ -69,16 +70,27 @@
             pointer-events: none;
         }
 
-        /* 固定ヘッダー */
+        /* 固定ヘッダー（常に画面上部に追従） */
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            background: rgba(3, 7, 8, 0.75); /* 背景を少し透過 */
+            backdrop-filter: blur(12px); /* すりガラス効果 */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-inner {
             width: 100%;
             max-width: 1200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 40px 24px;
-            position: relative;
-            z-index: 10;
+            padding: 24px;
         }
 
         .logo {
@@ -116,7 +128,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 24px 120px;
+            padding: 140px 24px 120px; /* 固定ヘッダーに被らないよう上部余白を増加 */
             max-width: 1100px;
             width: 100%;
             position: relative;
@@ -353,9 +365,10 @@
         }
 
         @media (max-width: 480px) {
-            header { padding: 24px 20px; }
+            .header-inner { padding: 16px 20px; }
             .logo { font-size: 18px; }
             nav { gap: 20px; }
+            main { padding-top: 100px; }
             .badge {
                 font-size: 10px;
                 padding: 10px 16px;
@@ -380,11 +393,13 @@
     <div class="video-overlay"></div>
 
     <header>
-        <a href="#" class="logo">STELLAR_AI</a>
-        <nav>
-            <a href="#archive">Archive</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="header-inner">
+            <a href="#" class="logo">STELLAR_AI</a>
+            <nav>
+                <a href="#archive">Archive</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -398,7 +413,7 @@
                 澄み切った星空のように、複雑なノイズから本質を見出す。金融工学、行政自動化、自然科学計算モデルを実装するプログラミングスタジオ。独自構築のニューラルアーキテクチャを用い、ミッションクリティカルな実業領域の最適化を実行します。
             </p>
             <div class="btn-hero-wrap">
-                <a href="#contact" class="btn-stellar">Launch Project</a>
+                <a href="#archive" class="btn-stellar">Launch Project</a>
             </div>
         </div>
 
@@ -407,40 +422,40 @@
             
             <div class="card">
                 <div class="card-meta">MODULE_01 // QUANTUM_FINANCE</div>
-                <div class="card-title">超高頻度・金融システム</div>
+                <div class="card-title">超高頻度・金融システム構築</div>
                 <div class="card-body">
-                    数ミリ秒の変動から数兆パターンの市場ノイズをリアルタイムで分離。強化学習アルゴリズムをコアに組み込み、流動性予測と資産価格のマイクロ秒単位の最適配置アルゴリズムを自律実行する計算基盤。
+                    数ミリ秒の変動から数兆パターンの市場ノイズをリアルタイムで分離。強化学習アルゴリズムをコアに組み込み、流動性予測と資産価格のマイクロ秒単位の最適配置を自律実行する計算基盤を構築します。
                 </div>
                 <ul class="card-details">
                     <li>ミリ秒以下の超低遅延処理（HFTロジック）</li>
                     <li>異常検知による不審取引のリアルタイム遮断</li>
-                    <li>マルチエージェント型シミュレーション</li>
+                    <li>マルチエージェント型市場シミュレーション</li>
                 </ul>
             </div>
 
             <div class="card">
                 <div class="card-meta">MODULE_02 // ADMINISTRATIVE_ENGINE</div>
-                <div class="card-title">公的書類自動生成・審査系</div>
+                <div class="card-title">公的書類の作成管理システム</div>
                 <div class="card-body">
-                    複雑に入り組む法的要件や行政通達のデータベースをLLMグラフ構造で完全解析。法的整合性を担保した公的書類の自動出力エンジン、および申請書類に潜む矛盾を自動検知する厳密なディープロジック。
+                    複雑に入り組む法的要件や行政通達のデータベースをLLMグラフ構造で完全解析。法的整合性を担保した公的書類の自動出力エンジン、および申請書類に潜む矛盾を自動検知する厳密な管理システム。
                 </div>
                 <ul class="card-details">
                     <li>RAGを超えた法規グラフ照合アルゴリズム</li>
-                    <li>非構造化データからの極めて高精度な情報抽出</li>
-                    <li>ヒューマンエラーを限りなく零にする検証システム</li>
+                    <li>非構造化データからの高精度な情報抽出</li>
+                    <li>ヒューマンエラーを限りなく零にする検証機能</li>
                 </ul>
             </div>
 
             <div class="card">
                 <div class="card-meta">MODULE_03 // METEOROLOGICAL_PREDICTION</div>
-                <div class="card-title">自律型・高解像度気象予報</div>
+                <div class="card-title">自律型・高解像度気象予測</div>
                 <div class="card-body">
-                    従来の物理シミュレーションをディープラーニング計算モデルに統合。衛星データ、気温、気圧の流れをメッシュ状に構造化し、局所的な集中豪雨や急激な気候変動をピンポイントで予測する流体解析ニューラルネットワーク。
+                    従来の物理シミュレーションをディープラーニング計算モデルに統合。衛星データ、気温、気圧の流れをメッシュ状に構造化し、局所的な集中豪雨や急激な気候変動をピンポイントで予測する流体解析ネットワーク。
                 </div>
                 <ul class="card-details">
                     <li>時空間グラフニューラルネットワーク（GNN）</li>
-                    <li>線状降水帯・突発災害の発生検知予測</li>
-                    <li>計算コストを従来の数百分の一に削減</li>
+                    <li>線状降水帯・突発災害の発生検知・早期警告</li>
+                    <li>計算コストを従来の数百分の一に大幅削減</li>
                 </ul>
             </div>
 
