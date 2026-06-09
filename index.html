@@ -33,7 +33,7 @@
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
         /* 🎥 動画背景レイヤーの設定 */
@@ -59,7 +59,7 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            opacity: 0.5;
+            opacity: 0.45;
         }
 
         /* サイバーグリッド */
@@ -72,9 +72,9 @@
             background-image: 
                 linear-gradient(rgba(0, 242, 254, 0.01) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 242, 254, 0.01) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-size: 40px 40px;
             background-position: center;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         /* グラデーションオーバーレイ */
@@ -84,15 +84,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(3,5,8,0.2) 0%, rgba(3,5,8,0.8) 80%, #030508 100%);
+            background: linear-gradient(to bottom, rgba(3,5,8,0.1) 0%, rgba(3,5,8,0.7) 70%, #030508 100%);
         }
 
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 1100px; /* 少し横幅を絞って凝縮感をアップ */
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
 
         /* ヘッダー */
@@ -100,23 +100,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 1.5rem;
             margin-top: 1rem;
-            background: rgba(3, 5, 8, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            background: rgba(3, 5, 8, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
             font-family: 'Share Tech Mono', monospace;
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: var(--text-main);
             text-decoration: none;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -124,53 +124,53 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 2.5rem;
+            margin-left: 2rem;
             transition: all 0.3s;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
         }
 
         nav a:hover {
             color: var(--neon-blue);
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
         }
 
         /* ヒーロー */
         .hero {
-            min-height: 90vh;
+            min-height: 80vh; /* 無駄な縦スペースをカット */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 4rem 0;
         }
 
         .hero-tag {
             font-family: 'Share Tech Mono', monospace;
-            background: rgba(0, 242, 254, 0.1);
+            background: rgba(0, 242, 254, 0.07);
             color: var(--neon-blue);
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            backdrop-filter: blur(5px);
+            padding: 0.3rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 242, 254, 0.15);
         }
 
         .hero-title {
-            font-size: clamp(1.8rem, 5.5vw, 4.5rem);
+            font-size: clamp(1.6rem, 5vw, 3.8rem);
             font-weight: 200;
-            line-height: 1.4;
+            line-height: 1.3;
             letter-spacing: -1px;
-            margin-bottom: 2.5rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.7);
             width: 100%;
         }
 
         .hero-title strong {
             font-weight: 700;
-            background: linear-gradient(120deg, var(--text-main) 30%, var(--neon-blue) 70%, var(--neon-green) 100%);
+            background: linear-gradient(120deg, var(--text-main) 20%, var(--neon-blue) 70%, var(--neon-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
@@ -184,47 +184,46 @@
             font-family: 'Share Tech Mono', monospace;
             font-weight: 400;
             white-space: nowrap;
-            border-right: 3px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
             padding-right: 4px;
             animation: blink 0.75s step-end infinite;
         }
 
         .hero-desc {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            max-width: 700px;
-            margin-bottom: 3.5rem;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+            max-width: 620px;
+            margin-bottom: 3rem;
             font-weight: 400;
         }
 
         .cta-btn {
             display: inline-block;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            background: var(--text-main);
             color: #000;
             font-weight: 700;
-            padding: 1.2rem 3rem;
-            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
             text-decoration: none;
-            border-radius: 40px;
+            border-radius: 4px; /* 角をシャープに */
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 8px 30px rgba(0, 242, 254, 0.3);
+            transition: all 0.3s ease;
         }
 
         .cta-btn:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.6);
-            color: #fff;
+            transform: translateY(-2px);
+            background: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
         }
 
-        /* セクション */
+        /* ✨ セクションの余白を極限まで引き締め */
         .section {
-            padding: 8rem 0;
+            padding: 4.5rem 0; /* 8remから4.5remに大幅カット */
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
 
         .section.visible {
@@ -232,110 +231,126 @@
             transform: translateY(0);
         }
 
+        /* ✨ 超洗練されたタイトルデザイン */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem; /* タイトル下の無駄なスペースを縮小 */
+            position: relative;
+        }
+
         .section-num {
             font-family: 'Share Tech Mono', monospace;
             color: var(--neon-blue);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 3px;
-            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            margin-bottom: 0.3rem;
+            opacity: 0.8;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            font-weight: 200;
-            text-align: center;
-            margin-bottom: 4rem;
-            letter-spacing: 1px;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 200; /* 極細フォントでラグジュアリーに */
+            letter-spacing: 4px; /* 文字間隔を広げて高級感を演出 */
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #a1b0cb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding-bottom: 0.8rem;
         }
 
-        /* グリッド */
+        /* タイトル下の繊細なサイバーライン */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            margin: 0.5rem auto 0;
+        }
+
+        /* ✨ グリッドの間隔を詰めて密度の高いプロ仕様に */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; /* 2.5remから1.5remへ凝縮 */
         }
 
+        /* ✨ カード内の無駄な余白をカット */
         .card {
-            background: rgba(3, 5, 8, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 16px;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
+            background: rgba(5, 8, 14, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 1.8rem; /* 2.5remから1.8remへ最適化 */
+            border-radius: 6px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            background: rgba(3, 5, 8, 0.8);
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 242, 254, 0.05);
+            transform: translateY(-4px);
+            border-color: rgba(0, 242, 254, 0.25);
+            background: rgba(7, 11, 20, 0.85);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
         }
-
-        /* 💡 無駄なスペース（画像ラッパー）を削除しました */
 
         .card-tag {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--neon-blue);
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+            color: var(--neon-purple); /* パープルに変えて落ち着きを付与 */
+            font-size: 0.75rem;
+            margin-bottom: 0.6rem;
             letter-spacing: 2px;
         }
 
         .card-title {
-            font-size: 1.35rem;
-            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(90deg, #fff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.3px;
+            color: var(--text-main);
         }
 
         .card-text {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.8;
+            font-size: 0.88rem;
+            line-height: 1.7;
             text-align: justify;
+            opacity: 0.9;
         }
 
         /* お問い合わせ */
         .contact-box {
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
-            background: rgba(3, 5, 8, 0.8);
+            background: rgba(5, 8, 14, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3.5rem 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 2.5rem 2rem; /* スペースを詰めました */
+            border-radius: 8px;
         }
 
         .form-group {
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.8rem; /* 間隔を少しタイトに */
         }
 
         .form-group label {
             display: block;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--neon-blue);
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 2px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
             color: var(--text-main);
-            font-size: 1rem;
-            border-radius: 8px;
+            font-size: 0.95rem;
+            border-radius: 4px;
             transition: all 0.3s;
         }
 
@@ -343,19 +358,18 @@
             outline: none;
             border-color: var(--neon-blue);
             background: rgba(0, 242, 254, 0.01);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
         }
 
         .form-submit {
             width: 100%;
             background: transparent;
             color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-            padding: 1.2rem;
+            border: 1px solid rgba(0, 255, 204, 0.4);
+            padding: 1rem;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 1rem;
+            font-size: 0.95rem;
             letter-spacing: 2px;
-            border-radius: 30px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 700;
@@ -364,15 +378,16 @@
         .form-submit:hover {
             background: var(--neon-green);
             color: #000;
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+            border-color: var(--neon-green);
         }
 
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 3rem 0;
             text-align: center;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             letter-spacing: 1px;
             background: #030508;
@@ -384,10 +399,10 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 1.2rem; }
-            .hero { padding: 6rem 0; }
-            .contact-box { padding: 2.5rem 1.5rem; }
-            .hero-title { line-height: 1.5; }
+            .container { padding: 0 1rem; }
+            .hero { padding: 4rem 0; min-height: 70vh; }
+            .contact-box { padding: 2rem 1.2rem; }
+            .section { padding: 3.5rem 0; }
         }
     </style>
 </head>
@@ -424,8 +439,11 @@
             </section>
 
             <section class="section" id="projects">
-                <div class="section-num">01 // PROVEN TRACK RECORD</div>
-                <h2 class="section-title">Selected Achievements</h2>
+                <div class="section-header">
+                    <div class="section-num">01 // PROVEN TRACK RECORD</div>
+                    <h2 class="section-title">Selected Achievements</h2>
+                </div>
+                
                 <div class="grid">
                     
                     <div class="card">
@@ -448,90 +466,4 @@
                         <div class="card-tag">ASTRO-DATA // WEATHER FORECAST</div>
                         <div class="card-title">自律型星空気象予測システム</div>
                         <p class="card-text">
-                            全国各地の高高度光学観測カメラから受信するリアルタイム画像フィードと、複数のグローバル気象メッシュデータをマルチモーダルAIで統合。大気微粒子の挙動や局所的な雲の生成メカニズムをシミュレーションし、満天の星空が広がる最適なタイミングと観測スポットを94.8%という圧倒的な予測精度で自動検出する自律型計算システムです。自然科学データの計算処理と宇宙観測ロジックを融合させた、最先端のデータサイエンスを具現化しています。
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="section" id="contact">
-                <div class="section-num">02 // INQUIRY WINDOW</div>
-                <h2 class="section-title">Connect with Us</h2>
-                
-                <div class="contact-box">
-                    <form action="https://formspree.io/f/meewzjlg" method="POST">
-                        <div class="form-group">
-                            <label for="name">NAME // お名前</label>
-                            <input type="text" id="name" name="name" required placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">EMAIL // メールアドレス</label>
-                            <input type="email" id="email" name="_replyto" required placeholder="address@domain.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">PROJECT DETAILS // ご依頼内容</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="金融系ロジック、公的書類出力、AI自動化プログラム作成など、ご依頼内容の概要をお聞かせください。"></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">SEND DISPATCH // 送信する</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            &copy; 2026 STELLAR_AI LAB. ALL RIGHTS RESERVED. Inspired by the starry sky of Shiga Kogen.
-        </footer>
-    </div>
-
-    <script>
-        // --- 1. タイピングテキスト（スマホ最適化版スクリプト） ---
-        const words = ["プログラムを作成する。", "システムを構築する。", "未来を実装する。"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const target = document.getElementById('typed-target');
-
-        function type() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                target.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                target.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 30 : 60;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2500;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 300;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-        
-        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
-
-        // --- 2. スクロール時のフェードイン効果 ---
-        const sections = document.querySelectorAll('.section');
-        const observerOptions = { root: null, threshold: 0.1 };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => observer.observe(section));
-    </script>
-</body>
-</html>
+                            全国各地の高高度光学観測カメラ
