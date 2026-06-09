@@ -128,7 +128,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 140px 24px 120px; /* 固定ヘッダーに被らないよう上部余白を増加 */
+            padding: 140px 24px 80px; /* 固定ヘッダーに被らないよう上部余白を増加 */
             max-width: 1100px;
             width: 100%;
             position: relative;
@@ -356,6 +356,24 @@
             width: auto;
         }
 
+        /* フッターセクション */
+        footer {
+            width: 100%;
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
+            margin-top: auto;
+        }
+
+        .footer-credit {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
         /* モバイル端末への完全レスポンシブ最適化 */
         @media (max-width: 960px) {
             .grid-container {
@@ -481,6 +499,12 @@
         </div>
 
     </main>
+
+    <footer>
+        <div class="footer-credit">
+            &copy; 2026 STELLAR_AI Quantum Intelligence Laboratory. All rights reserved.
+        </div>
+    </footer>
 
     <script>
         // 1. 自動再生エラー時の安全処理
