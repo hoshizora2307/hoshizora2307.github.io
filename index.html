@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-DRIVEN PROGRAMMING LAB</title>
+    <title>AI_FORGE // STELLAR INTELLIGENCE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #060709;
-            --text-color: #f3f4f6;
-            --accent-color: #00ffcc; /* サイバーネオンティール */
-            --accent-purple: #9437ff; /* アクセントの紫 */
-            --muted-color: #8e929b;
+            /* 志賀高原の美しい夜空から着想を得たディープスペースカラー */
+            --bg-dark: #030508;
+            --bg-space: linear-gradient(135deg, #030508 0%, #080c14 50%, #0d071a 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --neon-blue: #00f2fe; /* 澄んだ星の輝き */
+            --neon-purple: #4facfe; /* 星雲のグラデーション */
+            --neon-green: #00ffcc; /* オーロラグリーン */
         }
 
         * {
@@ -28,15 +31,16 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            background: var(--bg-space);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* 背景のパーティクルキャンバス */
-        #particle-canvas {
+        /* 背景：星空とデジタルグリッドのレイヤー */
+        .background-layers {
             position: fixed;
             top: 0;
             left: 0;
@@ -44,131 +48,162 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.35;
+        }
+
+        #star-canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        /* 空間の広がりを感じさせる極薄のデジタルグリッド */
+        .grid-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 242, 254, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px);
+            transform-origin: top center;
+            opacity: 0.5;
         }
 
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* ナビゲーションヘッダー */
+        /* ガラスモルフィズムを採用した美しいヘッダー */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 0;
+            padding: 1.5rem 2rem;
+            margin-top: 1rem;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             font-family: 'Share Tech Mono', monospace;
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-color);
+            letter-spacing: 3px;
+            color: var(--text-main);
             text-decoration: none;
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-purple));
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav a {
-            color: var(--muted-color);
+            color: var(--text-muted);
             text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
+            margin-left: 2.5rem;
+            transition: all 0.3s;
             font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         nav a:hover {
-            color: var(--accent-color);
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
         }
 
         /* ヒーローセクション */
         .hero {
-            height: 85vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
         }
 
         .hero-tag {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            font-size: 1rem;
-            letter-spacing: 4px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--neon-blue);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 242, 254, 0.2);
         }
 
         .hero-title {
-            font-size: clamp(2rem, 5vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 2rem;
-            max-width: 900px;
+            font-size: clamp(2.2rem, 6vw, 5.5rem);
+            font-weight: 200; /* あえて細くして高級感を出す */
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 2.5rem;
         }
 
-        /* 動的タイピングテキストのエフェクト */
-        .typing-text {
-            color: transparent;
-            -webkit-text-stroke: 1px var(--text-color);
-            border-right: 3px solid var(--accent-color);
-            white-space: nowrap;
+        .hero-title strong {
+            font-weight: 700;
+            background: linear-gradient(120deg, var(--text-main) 30%, var(--neon-blue) 70%, var(--neon-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-container {
+            display: inline-block;
+            min-width: 280px;
+            text-align: left;
+            color: var(--neon-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 400;
+            border-right: 2px solid var(--neon-green);
             animation: blink 0.75s step-end infinite;
         }
 
         .hero-desc {
             font-size: 1.2rem;
-            color: var(--muted-color);
-            max-width: 600px;
-            margin-bottom: 3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 3.5rem;
+            font-weight: 400;
         }
 
-        /* サイバー感のあるボタン */
+        /* 宇宙的な光を放つ最先端のボタン */
         .cta-btn {
             display: inline-block;
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 1rem 2.5rem;
-            font-family: 'Share Tech Mono', monospace;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            color: #000;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
             font-size: 1rem;
             letter-spacing: 2px;
             text-decoration: none;
-            border-radius: 2px;
+            border-radius: 40px;
             cursor: pointer;
-            position: relative;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 8px 30px rgba(0, 242, 254, 0.3);
         }
 
         .cta-btn:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.6);
+            color: #fff;
         }
 
-        /* スクロールフェードイン用セクション共通 */
+        /* スクロールフェードイン */
         .section {
-            padding: 8rem 0;
+            padding: 10rem 0;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+            transform: translateY(60px);
+            transition: all 1.2rem cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
         .section.visible {
@@ -178,337 +213,155 @@
 
         .section-num {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-purple);
+            color: var(--neon-blue);
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-align: center;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            letter-spacing: -0.5px;
-            position: relative;
+            font-size: 2.5rem;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 5rem;
+            letter-spacing: 1px;
         }
 
-        /* 実績グリッド */
+        /* 実績：高級感のあるフロストガラス風グリッド */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 2.5rem;
-            border-radius: 4px;
-            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
         }
 
         .card-tag {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
+            color: var(--neon-blue);
             font-size: 0.8rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(148, 55, 255, 0.4); /* 紫のホバー線 */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.05);
         }
 
         .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .card-text {
-            color: var(--muted-color);
+            color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.8;
         }
 
-        /* お問い合わせ（依頼はこちら）フォーム */
+        /* お問い合わせフォーム */
         .contact-box {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(5, 8, 15, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 4px;
+            padding: 4rem 3.5rem;
+            border-radius: 24px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.7);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .form-group label {
             display: block;
             font-family: 'Share Tech Mono', monospace;
             font-size: 0.85rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
+            color: var(--neon-blue);
+            margin-bottom: 0.7rem;
+            letter-spacing: 2px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.2rem;
+            color: var(--text-main);
             font-size: 1rem;
-            border-radius: 2px;
-            transition: border-color 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
 
         .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-color: var(--neon-blue);
+            background: rgba(0, 242, 254, 0.01);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
         }
 
         .form-submit {
             width: 100%;
             background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--text-color);
-            padding: 1rem;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            padding: 1.2rem;
             font-family: 'Share Tech Mono', monospace;
             font-size: 1rem;
             letter-spacing: 2px;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s;
+            font-weight: 700;
         }
 
         .form-submit:hover {
-            background: var(--text-color);
-            color: var(--bg-color);
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
         }
 
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 4rem 0;
             text-align: center;
             font-family: 'Share Tech Mono', monospace;
             font-size: 0.8rem;
-            color: var(--muted-color);
+            color: var(--text-muted);
+            letter-spacing: 1px;
         }
 
         @keyframes blink {
             from, to { border-color: transparent }
-            50% { border-color: var(--accent-color); }
+            50% { border-color: var(--neon-green); }
         }
 
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
-            .hero { height: auto; padding: 6rem 0; }
-            .contact-box { padding: 1.5rem; }
+            .hero { padding: 8rem 0; }
+            .contact-box { padding: 2.5rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="particle-canvas"></canvas>
-
-    <div class="container">
-        <header>
-            <a href="#" class="logo">AI_FORGE</a>
-            <nav>
-                <a href="#projects">ARCHIVE</a>
-                <a href="#contact">CONTACT</a>
-            </nav>
-        </header>
-
-        <main>
-            <section class="hero">
-                <div class="hero-tag">// SPECIALIZED IN AI INTEGRATION</div>
-                <h1 class="hero-title">
-                    AIを駆使したあらゆる<br>
-                    <span class="typing-text" id="typed-target"></span>
-                </h1>
-                <p class="hero-desc">
-                    最先端のLLM、自律型エージェント、画像認識、データ解析モデルを既存のシステムや新規アイデアに組み込み、圧倒的な自動化とインテリジェンスを実装します。
-                </p>
-                <a href="#contact" class="cta-btn">GET IN TOUCH // 依頼はこちら</a>
-            </section>
-
-            <section class="section" id="projects">
-                <div class="section-num">01 // PROVEN TRACK RECORD</div>
-                <h2 class="section-title">Selected Achievements</h2>
-                <div class="grid">
-                    <div class="card">
-                        <div class="card-tag">FINANCIAL TECH // LLM</div>
-                        <div class="card-title">自律型市場解析エージェント</div>
-                        <p class="card-text">
-                            複数の暗号資産や為替のリアルタイムチャート、ニュース、SNSの感情分析を同時に行い、次の値動きを高度に予測して自動でポジションを構築するAIシステム。精度の高い予測ロジックをプログラミング。
-                        </p>
-                    </div>
-                    <div class="card">
-                        <div class="card-tag">SYSTEM AUTOMATION // WEB</div>
-                        <div class="card-title">インテリジェントWebスクレイパー</div>
-                        <p class="card-text">
-                            サイトの構造変化をAIが自動で認識し、コードを書き換えることなく永続的にデータを抽出し続ける次世代スクレイピングシステム。企業のデータ収集効率を200%向上。
-                        </p>
-                    </div>
-                    <div class="card">
-                        <div class="card-tag">CREATIVE // CORE ALGORITHM</div>
-                        <div class="card-title">自律型パーティクル制御エンジン</div>
-                        <p class="card-text">
-                            数万個の粒子がAIモデルの出力（音声やユーザーの動きなど）に反応し、幾何学的なビジュアルをリアルタイムに生成・変形させる、デザインと数理物理学を融合させたインタラクティブ・システム。
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section" id="contact">
-                <div class="section-num">02 // SECURE CONNECTION</div>
-                <h2 class="section-title" style="text-align: center;">Project Inquiry</h2>
-                
-                <div class="contact-box">
-                    <form onsubmit="alert('送信機能を追加するには、バックエンドの設定が必要です。まずは見た目の実装が完了しました！'); return false;">
-                        <div class="form-group">
-                            <label for="name">NAME // お名前</label>
-                            <input type="text" id="name" required placeholder="Anonymous">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">EMAIL // メールアドレス</label>
-                            <input type="email" id="email" required placeholder="your@address.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">PROJECT DETAILS // ご依頼内容</label>
-                            <textarea id="message" rows="5" required placeholder="どのようなAIプログラムを作成したいか、概要をお聞かせください。"></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">SEND REQUEST // 送信する</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            &copy; 2026 AI_FORGE. ALL RIGHTS RESERVED.
-        </footer>
-    </div>
-
-    <script>
-        // --- 1. 動的なタイピングテキスト効果 ---
-        const words = ["プログラムを作成する。", "システムを構築する。", "未来を実装する。"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const target = document.getElementById('typed-target');
-
-        function type() {
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                target.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                target.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // 出し切ったところで2秒待機
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500; // 次の文字にいく前に少し待機
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
-
-
-        // --- 2. 背景の幾何学パーティクル・システム ---
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 1.5;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#00ffcc';
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 14000));
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-        initParticles();
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 130) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 255, 204, ${0.08 * (1 - dist / 130)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-
-        // --- 3. スクロール時のフェードイン（Intersection Observer） ---
-        const sections = document.querySelectorAll('.section');
-        const observerOptions = { root: null, threshold: 0.1 };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => observer.observe(section));
-    </script>
-</body>
-</html>
+    <div class="background-layers">
+        
