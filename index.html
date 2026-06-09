@@ -59,7 +59,7 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            opacity: 0.5; /* 背景動画の透明度を調整 */
+            opacity: 0.5;
         }
 
         /* サイバーグリッド */
@@ -159,12 +159,13 @@
         }
 
         .hero-title {
-            font-size: clamp(2.2rem, 6vw, 5.5rem);
+            font-size: clamp(1.8rem, 5.5vw, 4.5rem);
             font-weight: 200;
-            line-height: 1.15;
-            letter-spacing: -2px;
+            line-height: 1.4;
+            letter-spacing: -1px;
             margin-bottom: 2.5rem;
             text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            width: 100%;
         }
 
         .hero-title strong {
@@ -172,21 +173,24 @@
             background: linear-gradient(120deg, var(--text-main) 30%, var(--neon-blue) 70%, var(--neon-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            max-width: 100%;
         }
 
+        /* タイピング部分のスタイル */
         .typing-container {
-            display: inline-block;
-            min-width: 280px;
-            text-align: left;
+            display: inline;
             color: var(--neon-green);
             font-family: 'Share Tech Mono', monospace;
             font-weight: 400;
-            border-right: 2px solid var(--neon-green);
+            white-space: nowrap;
+            border-right: 3px solid var(--neon-green);
+            padding-right: 4px;
             animation: blink 0.75s step-end infinite;
         }
 
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-main);
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
             max-width: 700px;
@@ -217,9 +221,9 @@
 
         /* セクション */
         .section {
-            padding: 10rem 0;
+            padding: 8rem 0;
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(40px);
             transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
@@ -238,10 +242,10 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 200;
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             letter-spacing: 1px;
         }
 
@@ -249,7 +253,7 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
         .card {
@@ -257,7 +261,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 16px;
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
@@ -265,65 +269,37 @@
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             background: rgba(3, 5, 8, 0.8);
             border-color: rgba(0, 242, 254, 0.3);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 242, 254, 0.05);
         }
 
-        /* 📸 追加された画像エリアのCSSスタイル */
-        .card-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 180px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            background: #080c14;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .card-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: transform 0.5s ease;
-        }
-
-        .card:hover .card-image-wrapper img {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-
-        /* 画像の上のサイバー調グラデーションフィルム */
-        .card-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 40%, rgba(3, 5, 8, 0.8) 100%);
-            pointer-events: none;
-        }
+        /* 💡 無駄なスペース（画像ラッパー）を削除しました */
 
         .card-tag {
             font-family: 'Share Tech Mono', monospace;
             color: var(--neon-blue);
             font-size: 0.8rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             letter-spacing: 2px;
         }
 
         .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            margin-bottom: 1.2rem;
             font-weight: 700;
             letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .card-text {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.8;
+            text-align: justify;
         }
 
         /* お問い合わせ */
@@ -334,7 +310,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 4rem 3.5rem;
+            padding: 3.5rem 2.5rem;
             border-radius: 24px;
             box-shadow: 0 30px 70px rgba(0,0,0,0.9);
         }
@@ -408,9 +384,10 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
-            .hero { padding: 8rem 0; }
+            .container { padding: 0 1.2rem; }
+            .hero { padding: 6rem 0; }
             .contact-box { padding: 2.5rem 1.5rem; }
+            .hero-title { line-height: 1.5; }
         }
     </style>
 </head>
@@ -452,35 +429,26 @@
                 <div class="grid">
                     
                     <div class="card">
-                        <div class="card-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80" alt="Financial Logic">
-                        </div>
                         <div class="card-tag">FINANCIAL TECH // HIGH-FREQUENCY</div>
                         <div class="card-title">超高速・金融市場解析ロジック</div>
                         <p class="card-text">
-                            ミリ秒単位の市場データをAIモデルがリアルタイムで自動解析。高度な暗号処理とリスクヘッジロジックをプログラミングし、強固なセキュリティを担保した金融トレーディング・バックエンド。
+                            ミリ秒単位の極めて膨大なグローバル市場データを、独自構築のAI推論エンジンがリアルタイムで高精度に自動解析します。高度な時系列予測アルゴリズムとリスクヘッジロジックをシームレスに結合し、急激なボラティリティ変化に対しても即座に適応。ゼロダウンタイムを想定した堅牢なアーキテクチャに加え、エンドツーエンドの暗号処理技術をプログラミングすることで、最高峰のセキュリティと超低遅延を極限まで両立した、次世代型の金融トレーディング・バックエンドシステムです。
                         </p>
                     </div>
 
                     <div class="card">
-                        <div class="card-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Document Automation">
-                        </div>
                         <div class="card-tag">GOVERNMENT // DOCUMENT AUTOMATION</div>
                         <div class="card-title">公的書類の自動生成・出力エンジン</div>
                         <p class="card-text">
-                            複雑な行政・公的機関のフォーマットをAIが動的に解析し、暗号化を施したセキュアなPDF/XMLデータとして自動出力。ミスが許されない厳格なバリデーションアルゴリズムを実装。
+                            複雑かつ多岐にわたる行政手続きや、中央官庁・公的機関が指定する厳格なデータフォーマットを、LLM（大規模言語モデル）をベースとした自社エンジンが動的に構文解析。ミスが決して許されない厳密なバリデーションアルゴリズムに基づき、完全自動で暗号化を施したセキュアなPDF、XML、JSONデータをミリ秒レベルで生成します。手動による確認プロセスを徹底的に排除し、業務効率を劇的に向上させる高度なエンタープライズ向けデータ変換ソリューションです。
                         </p>
                     </div>
 
                     <div class="card">
-                        <div class="card-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=600&q=80" alt="Astro System">
-                        </div>
                         <div class="card-tag">ASTRO-DATA // WEATHER FORECAST</div>
                         <div class="card-title">自律型星空気象予測システム</div>
                         <p class="card-text">
-                            高高度カメラの画像と気象データを統合し、雲の動きを解析。満天の星空が広がるベストタイミングと観測地点を94.8%の精度で弾き出す自然科学・データ計算プログラム。
+                            全国各地の高高度光学観測カメラから受信するリアルタイム画像フィードと、複数のグローバル気象メッシュデータをマルチモーダルAIで統合。大気微粒子の挙動や局所的な雲の生成メカニズムをシミュレーションし、満天の星空が広がる最適なタイミングと観測スポットを94.8%という圧倒的な予測精度で自動検出する自律型計算システムです。自然科学データの計算処理と宇宙観測ロジックを融合させた、最先端のデータサイエンスを具現化しています。
                         </p>
                     </div>
 
@@ -517,7 +485,7 @@
     </div>
 
     <script>
-        // --- 1. タイピングテキスト ---
+        // --- 1. タイピングテキスト（スマホ最適化版スクリプト） ---
         const words = ["プログラムを作成する。", "システムを構築する。", "未来を実装する。"];
         let wordIndex = 0;
         let charIndex = 0;
@@ -526,6 +494,7 @@
 
         function type() {
             const currentWord = words[wordIndex];
+            
             if (isDeleting) {
                 target.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
@@ -534,7 +503,7 @@
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 40 : 80;
+            let typeSpeed = isDeleting ? 30 : 60;
 
             if (!isDeleting && charIndex === currentWord.length) {
                 typeSpeed = 2500;
@@ -542,12 +511,13 @@
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 400;
+                typeSpeed = 300;
             }
 
             setTimeout(type, typeSpeed);
         }
-        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 800));
+        
+        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
 
         // --- 2. スクロール時のフェードイン効果 ---
         const sections = document.querySelectorAll('.section');
