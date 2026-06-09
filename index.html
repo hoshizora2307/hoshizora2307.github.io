@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI_FORGE // STELLAR INTELLIGENCE</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -38,7 +39,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 🎥 動画背景レイヤーの設定（クラッシュ対策の最適化） */
+        /* 🎥 動画背景レイヤーの設定 */
         .video-background {
             position: fixed;
             top: 0;
@@ -64,6 +65,7 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
             opacity: 0.35;
+            background: var(--bg-dark);
         }
 
         .grid-layer {
@@ -79,7 +81,7 @@
         .overlay-layer {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(2,4,6,0.2) 0%, rgba(2,4,6,0.8) 60%, #020406 100%);
+            background: linear-gradient(to bottom, rgba(2,4,6,0.1) 0%, rgba(2,4,6,0.8) 60%, #020406 100%);
         }
 
         .container {
@@ -90,19 +92,27 @@
             padding: 0 1.2rem;
         }
 
-        /* ヘッダー */
+        /* 📌 ヘッダー上部固定の設定 */
         header {
+            position: fixed;
+            top: 0;
+            left: 1.2rem;
+            right: 1.2rem;
+            max-width: 961.6px;
+            margin: 0 auto;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.2rem;
+            padding: 0.9rem 1.2rem;
             margin-top: 0.8rem;
-            background: rgba(2, 4, 6, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(2, 4, 6, 0.45);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -131,13 +141,13 @@
 
         /* ヒーローセクション */
         .hero {
-            min-height: 75vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 3rem 0;
+            padding: 6.5rem 0 3rem 0;
         }
 
         .hero-tag {
@@ -148,36 +158,59 @@
             border-radius: 3px;
             font-size: 0.75rem;
             letter-spacing: 3px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             border: 1px solid rgba(0, 242, 254, 0.1);
         }
 
+        /* 華やかでサイバー感溢れるタイトルエリア */
+        .title-wrap {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .title-wrap::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(157, 78, 221, 0.08) 50%, transparent 100%);
+            filter: blur(20px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .hero-title {
-            font-size: clamp(1.5rem, 4.8vw, 3.2rem);
-            font-weight: 300;
-            line-height: 1.4;
+            font-size: clamp(1.6rem, 5.2vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.35;
             letter-spacing: -0.5px;
-            margin-bottom: 1.8rem;
+            background: linear-gradient(135deg, #ffffff 30%, #b4fedf 70%, var(--neon-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
             width: 100%;
         }
 
         .hero-title strong {
             font-weight: 700;
-            color: var(--neon-green);
             display: inline-block;
             max-width: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
         }
 
-        /* タイピング（消失バグを防ぐためインラインブロック化＆最小幅の確保） */
+        /* タイピングエリア */
         .typing-container {
             display: inline-block;
-            color: var(--neon-green);
-            font-family: 'Share Tech Mono', monospace;
-            font-weight: 700;
             white-space: nowrap;
             border-right: 2px solid var(--neon-green);
             padding-right: 2px;
-            min-height: 1.2em;
+            min-height: 1.4em;
             vertical-align: bottom;
             animation: blink 0.75s step-end infinite;
         }
@@ -187,6 +220,7 @@
             color: #94a3b8;
             max-width: 580px;
             margin-bottom: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .cta-btn {
@@ -208,9 +242,9 @@
             transform: translateY(-1px);
         }
 
-        /* セクション設計（余白の無駄を極限カット） */
+        /* セクション設計 */
         .section {
-            padding: 3rem 0;
+            padding: 3.5rem 0;
             opacity: 0;
             transform: translateY(15px);
             transition: all 0.8s ease-out;
@@ -222,9 +256,9 @@
             transform: translateY(0);
         }
 
-        /* ✨ 圧倒的に尖った近未来型タイトルコンポーネント */
+        /* 左寄せサイバータイトル */
         .section-header {
-            text-align: left; /* 左寄せにしてプロのエンジニアスタジオ感を演出 */
+            text-align: left;
             margin-bottom: 1.8rem;
             border-left: 2px solid var(--neon-blue);
             padding-left: 0.8rem;
@@ -246,14 +280,14 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* グリッド（密度の高いミニマル設計） */
+        /* グリッド */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 1.2rem;
         }
 
-        /* カード（余白を詰め、ソリッドなテック感を持たせる） */
+        /* カード */
         .card {
             background: rgba(4, 8, 14, 0.8);
             border: 1px solid var(--border-color);
@@ -350,6 +384,7 @@
             border-color: var(--neon-green);
         }
 
+        /* 🛠 フッター文言の修正 */
         footer {
             border-top: 1px solid var(--border-color);
             padding: 2.5rem 0;
@@ -366,8 +401,13 @@
         }
 
         @media (max-width: 768px) {
+            header {
+                left: 0.8rem;
+                right: 0.8rem;
+                padding: 0.8rem 1rem;
+            }
             .container { padding: 0 0.8rem; }
-            .hero { padding: 2.5rem 0; min-height: 65vh; }
+            .hero { padding: 5.5rem 0 2.5rem 0; min-height: 70vh; }
             .contact-box { padding: 1.5rem 1rem; }
             .section { padding: 2.5rem 0; }
         }
@@ -375,8 +415,9 @@
 </head>
 <body>
 
+    <!-- 🎥 背景動画 -->
     <div class="video-background">
-        <video autoplay loop muted playsinline>
+        <video id="bg-video" autoplay loop muted playsinline webkit-playsinline pwa-playsinline>
             <source src="1331.mp4" type="video/mp4">
         </video>
         <div class="grid-layer"></div>
@@ -384,7 +425,8 @@
     </div>
 
     <div class="container">
-        <header>
+        <!-- 📌 固定ヘッダー -->
+        <header id="main-header">
             <a href="#" class="logo">STELLAR_AI</a>
             <nav>
                 <a href="#projects">ARCHIVE</a>
@@ -393,18 +435,22 @@
         </header>
 
         <main>
+            <!-- ヒーローセクション -->
             <section class="hero">
                 <div class="hero-tag">// QUANTUM INTELLIGENCE LABORATORY</div>
-                <h1 class="hero-title">
-                    AIを駆使したあらゆる<br>
-                    <strong><span class="typing-container" id="typed-target"></span></strong>
-                </h1>
+                <div class="title-wrap">
+                    <h1 class="hero-title">
+                        AIを駆使したあらゆる<br>
+                        <strong><span class="typing-container" id="typed-target"></span></strong>
+                    </h1>
+                </div>
                 <p class="hero-desc">
                     澄み切った星空のように、複雑なノイズから本質を見つけ出す。金融工学、行政自動化、自然科学計算モデルを実装するプログラミングスタジオ。
                 </p>
                 <a href="#contact" class="cta-btn">LAUNCH PROJECT</a>
             </section>
 
+            <!-- セクション 01: 実績 -->
             <section class="section" id="projects">
                 <div class="section-header">
                     <div class="section-num">01 // CORE ARCHIVE</div>
@@ -413,6 +459,7 @@
                 
                 <div class="grid">
                     
+                    <!-- カード 1 -->
                     <div class="card">
                         <div class="card-tag">FINANCIAL TECH // HIGH-FREQUENCY</div>
                         <div class="card-title">超高速・金融市場解析ロジック</div>
@@ -421,6 +468,7 @@
                         </p>
                     </div>
 
+                    <!-- カード 2 -->
                     <div class="card">
                         <div class="card-tag">GOVERNMENT // DOCUMENT AUTOMATION</div>
                         <div class="card-title">公的書類の自動生成・出力エンジン</div>
@@ -429,6 +477,7 @@
                         </p>
                     </div>
 
+                    <!-- カード 3 -->
                     <div class="card">
                         <div class="card-tag">ASTRO-DATA // WEATHER FORECAST</div>
                         <div class="card-title">自律型星空気象予測システム</div>
@@ -440,6 +489,7 @@
                 </div>
             </section>
 
+            <!-- セクション 02: お問い合わせ -->
             <section class="section" id="contact">
                 <div class="section-header">
                     <div class="section-num">02 // INQUIRY CONSOLE</div>
@@ -466,13 +516,14 @@
             </section>
         </main>
 
+        <!-- 📌 クリーンに修正したフッター -->
         <footer>
-            &copy; 2026 STELLAR_AI LAB. ALL RIGHTS RESERVED. Inspired by the starry sky of Shiga Kogen.
+            &copy; 2026 STELLAR_AI LAB. ALL RIGHTS RESERVED.
         </footer>
     </div>
 
     <script>
-        // --- 1. タイピングテキスト（消失バグ対応・安定化版） ---
+        // --- 1. タイピングテキスト ---
         const words = ["プログラムを作成する。", "システムを構築する。", "未来を実装する。"];
         let wordIndex = 0;
         let charIndex = 0;
@@ -493,7 +544,7 @@
             let typeSpeed = isDeleting ? 25 : 50;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2200; // 停止時間をわずかにスマートに
+                typeSpeed = 2200;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
@@ -503,13 +554,40 @@
 
             setTimeout(type, typeSpeed);
         }
+
+        // --- 2. 動画の強制再生安全装置 ---
+        function forcePlayVideo() {
+            const video = document.getElementById('bg-video');
+            if (video) {
+                video.play().catch((err) => {
+                    console.log("Auto-play prevented, retrying on user interaction.");
+                    document.body.addEventListener('click', () => { video.play(); }, { once: true });
+                });
+            }
+        }
+
+        // --- 3. スクロール時のヘッダー背景変化 ---
+        function handleHeaderScroll() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.style.background = "rgba(2, 4, 6, 0.75)";
+                header.style.padding = "0.7rem 1.2rem";
+                header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)";
+            } else {
+                header.style.background = "rgba(2, 4, 6, 0.45)";
+                header.style.padding = "0.9rem 1.2rem";
+                header.style.boxShadow = "none";
+            }
+        }
         
-        // 初回ロード時のチラつきを防止して滑らかに起動
         window.addEventListener("load", () => {
             setTimeout(type, 800);
+            forcePlayVideo();
         });
 
-        // --- 2. スクロール時のフェードイン効果（GPU駆動） ---
+        window.addEventListener("scroll", handleHeaderScroll);
+
+        // --- 4. スクロール時のフェードイン効果 ---
         const sections = document.querySelectorAll('.section');
         const observerOptions = { root: null, threshold: 0.05 };
 
