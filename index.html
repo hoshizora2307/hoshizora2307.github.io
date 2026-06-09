@@ -381,4 +381,176 @@
                     <strong><span class="typing-container" id="typed-target"></span></strong>
                 </h1>
                 <p class="hero-desc">
-                    澄み切った星空のように、複雑なノイズから本質を見つけ出す。金融工学、行政自動
+                    澄み切った星空のように、複雑なノイズから本質を見つけ出す。金融工学、行政自動化、自然科学計算モデルを実装するプログラミングスタジオ。
+                </p>
+                <a href="#contact" class="cta-btn">LAUNCH PROJECT // 依頼はこちら</a>
+            </section>
+
+            <section class="section" id="projects">
+                <div class="section-num">01 // PROVEN TRACK RECORD</div>
+                <h2 class="section-title">Selected Achievements</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-tag">FINANCIAL TECH // HIGH-FREQUENCY</div>
+                        <div class="card-title">超高速・金融市場解析ロジック</div>
+                        <p class="card-text">
+                            ミリ秒単位の市場データをAIモデルがリアルタイムで自動解析。高度な暗号処理とリスクヘッジロジックをプログラミングし、強固なセキュリティを担保した金融トレーディング・バックエンド。
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-tag">GOVERNMENT // DOCUMENT AUTOMATION</div>
+                        <div class="card-title">公的書類の自動生成・出力エンジン</div>
+                        <p class="card-text">
+                            複雑な行政・公的機関のフォーマットをAIが動的に解析し、暗号化を施したセキュアなPDF/XMLデータとして自動出力。ミスが許されない厳格なバリデーションアルゴリズムを実装。
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-tag">ASTRO-DATA // WEATHER FORECAST</div>
+                        <div class="card-title">自律型星空気象予測システム</div>
+                        <p class="card-text">
+                            高高度カメラの画像と気象データを統合し、雲の動きを解析。満天の星空が広がるベストタイミングと観測地点を94.8%の精度で弾き出す自然科学・データ計算プログラム。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="contact">
+                <div class="section-num">02 // INQUIRY WINDOW</div>
+                <h2 class="section-title">Connect with Us</h2>
+                
+                <div class="contact-box">
+                    <form action="https://formspree.io/f/meewzjlg" method="POST">
+                        <div class="form-group">
+                            <label for="name">NAME // お名前</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">EMAIL // メールアドレス</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="address@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">PROJECT DETAILS // ご依頼内容</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="金融系ロジック、公的書類出力、AI自動化プログラム作成など、ご依頼内容の概要をお聞かせください。"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">SEND DISPATCH // 送信する</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            &copy; 2026 STELLAR_AI LAB. ALL RIGHTS RESERVED. Inspired by the starry sky of Shiga Kogen.
+        </footer>
+    </div>
+
+    <script>
+        // --- 1. タイピングテキスト ---
+        const words = ["プログラムを作成する。", "システムを構築する。", "未来を実装する。"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const target = document.getElementById('typed-target');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                target.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                target.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 800));
+
+
+        // --- 2. 星空（パララックス効果付き）システム ---
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5;
+                this.blinkSpeed = 0.01 + Math.random() * 0.02;
+                this.alpha = Math.random();
+                this.depth = 0.05 + Math.random() * 0.15; 
+            }
+            draw(scrollOffset) {
+                ctx.beginPath();
+                let currentY = this.y + (scrollOffset * this.depth);
+                if (currentY > canvas.height) {
+                    currentY = currentY % canvas.height;
+                }
+
+                ctx.arc(this.x, currentY, this.size, 0, Math.PI * 2);
+                
+                this.alpha += this.blinkSpeed;
+                if (this.alpha > 1 || this.alpha < 0.2) {
+                    this.blinkSpeed *= -1;
+                }
+                
+                ctx.fillStyle = `rgba(248, 250, 252, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            const count = Math.min(150, Math.floor((canvas.width * canvas.height) / 8000));
+            for (let i = 0; i < count; i++) {
+                stars.push(new Star());
+            }
+        }
+        initStars();
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const scrollOffset = window.scrollY;
+            
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].draw(scrollOffset);
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+
+        // --- 3. スクロール時のフェードイン効果 ---
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = { root: null, threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
