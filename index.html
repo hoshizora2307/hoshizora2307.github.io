@@ -11,7 +11,6 @@
     <style>
         :root {
             --bg-dark: #030508;
-            --bg-space: linear-gradient(135deg, #030508 0%, #080c14 50%, #0d071a 100%);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --neon-blue: #00f2fe; 
@@ -31,15 +30,14 @@
 
         body {
             background: var(--bg-dark);
-            background: var(--bg-space);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             line-height: 1.8;
         }
 
-        /* 背景レイヤー */
-        .background-layers {
+        /* 🎥 動画背景レイヤーの設定 */
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
@@ -47,27 +45,46 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
+            overflow: hidden;
+            background: var(--bg-dark);
         }
 
-        #star-canvas {
+        .video-background video {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.6; /* 文字が見えやすいように少し暗くしています */
         }
 
+        /* サイバーグリッド（動画の上に薄く重ねる） */
         .grid-layer {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 242, 254, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 254, 0.02) 1px, transparent 1px);
+                linear-gradient(rgba(0, 242, 254, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.01) 1px, transparent 1px);
             background-size: 50px 50px;
             background-position: center;
-            transform: perspective(500px) rotateX(60deg) translateY(-100px);
-            transform-origin: top center;
-            opacity: 0.5;
+            opacity: 0.4;
+        }
+
+        /* グラデーションオーバーレイ（下部にいくにつれて暗くする） */
+        .overlay-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(3,5,8,0.2) 0%, rgba(3,5,8,0.8) 80%, #030508 100%);
         }
 
         .container {
@@ -85,7 +102,7 @@
             align-items: center;
             padding: 1.5rem 2rem;
             margin-top: 1rem;
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(3, 5, 8, 0.4);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -138,6 +155,7 @@
             letter-spacing: 3px;
             margin-bottom: 2rem;
             border: 1px solid rgba(0, 242, 254, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .hero-title {
@@ -146,6 +164,7 @@
             line-height: 1.15;
             letter-spacing: -2px;
             margin-bottom: 2.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
         .hero-title strong {
@@ -168,7 +187,8 @@
 
         .hero-desc {
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: var(--text-main);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
             max-width: 700px;
             margin-bottom: 3.5rem;
             font-weight: 400;
@@ -233,10 +253,10 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(3, 5, 8, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 3rem 2.5rem;
             border-radius: 16px;
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -252,9 +272,9 @@
 
         .card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(3, 5, 8, 0.8);
             border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 242, 254, 0.05);
         }
 
         .card-title {
@@ -274,13 +294,13 @@
         .contact-box {
             max-width: 650px;
             margin: 0 auto;
-            background: rgba(5, 8, 15, 0.6);
+            background: rgba(3, 5, 8, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 4rem 3.5rem;
             border-radius: 24px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.7);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
         }
 
         .form-group {
@@ -343,6 +363,7 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             letter-spacing: 1px;
+            background: #030508;
         }
 
         @keyframes blink {
@@ -359,9 +380,13 @@
 </head>
 <body>
 
-    <div class="background-layers">
-        <canvas id="star-canvas"></canvas>
+    <div class="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="1331.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="grid-layer"></div>
+        <div class="overlay-layer"></div>
     </div>
 
     <div class="container">
@@ -477,68 +502,7 @@
         document.addEventListener("DOMContentLoaded", () => setTimeout(type, 800));
 
 
-        // --- 2. 星空（パララックス効果付き）システム ---
-        const canvas = document.getElementById('star-canvas');
-        const ctx = canvas.getContext('2d');
-        let stars = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Star {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5;
-                this.blinkSpeed = 0.01 + Math.random() * 0.02;
-                this.alpha = Math.random();
-                this.depth = 0.05 + Math.random() * 0.15; 
-            }
-            draw(scrollOffset) {
-                ctx.beginPath();
-                let currentY = this.y + (scrollOffset * this.depth);
-                if (currentY > canvas.height) {
-                    currentY = currentY % canvas.height;
-                }
-
-                ctx.arc(this.x, currentY, this.size, 0, Math.PI * 2);
-                
-                this.alpha += this.blinkSpeed;
-                if (this.alpha > 1 || this.alpha < 0.2) {
-                    this.blinkSpeed *= -1;
-                }
-                
-                ctx.fillStyle = `rgba(248, 250, 252, ${this.alpha})`;
-                ctx.fill();
-            }
-        }
-
-        function initStars() {
-            stars = [];
-            const count = Math.min(150, Math.floor((canvas.width * canvas.height) / 8000));
-            for (let i = 0; i < count; i++) {
-                stars.push(new Star());
-            }
-        }
-        initStars();
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const scrollOffset = window.scrollY;
-            
-            for (let i = 0; i < stars.length; i++) {
-                stars[i].draw(scrollOffset);
-            }
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-
-        // --- 3. スクロール時のフェードイン効果 ---
+        // --- 2. スクロール時のフェードイン効果 ---
         const sections = document.querySelectorAll('.section');
         const observerOptions = { root: null, threshold: 0.1 };
 
